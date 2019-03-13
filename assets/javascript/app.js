@@ -1,8 +1,9 @@
 //Global Variables
-var number = 1200;
+var number = 121;
 var intervalId;
 var correct = 0;
 var incorrect = 0;
+var answers;
 
 //right/wrong answers
 //cant select two answers
@@ -12,81 +13,90 @@ var incorrect = 0;
 function startScreen() {
     $(".data").html(`<div>
         <h2>To begin press this button</h2>
-        <button type="button" class="btn btn-info">Begin</button>
+        <button type="button" class=startButton class="btn btn-info">Begin</button>
     </div>`)
-}
+    $(".startButton").on("click", function() {
+    questionScreen () }
+)}
 
 function questionScreen () {
     $(".data").html(` <div class="timer">
     <h1>Begin!</h1>
 </div>
 
-<h2 class="Q1">First Question Here</h2>
+<h2>First Question Here</h2>
 
-<select class="custom-select">
+<select id="Q1" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="1" class="incorrect">One</option>
-    <option value="2" class="correct">Two</option>
-    <option value="3" class="incorrect">Three</option>
-    <option value="4" class="incorrect">Four</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect">Incorrect</option>
   </select>
 
 
-<h2 class="Q2">Second Question Here</h2>
+<h2>Second Question Here</h2>
 
-<select class="custom-select">
+<select id="Q2" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="1" class="correct">One</option>
-    <option value="2" class="incorrect">Two</option>
-    <option value="3" class="incorrect">Three</option>
-    <option value="4" class="incorrect">Four</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect">Incorrect</option>
   </select>
 
 
-<h2 class="Q3">Third Question Here</h2>
+<h2>Third Question Here</h2>
 
-<select class="custom-select">
+<select id="Q2" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="1" class="incorrect">One</option>
-    <option value="2" class="incorrect">Two</option>
-    <option value="3" class="correct">Three</option>
-    <option value="4" class="incorrect">Four</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect">Incorrect</option>
   </select>
 
 
-<h2 class="Q4">Fourth Question Here</h2>
+<h2>Fourth Question Here</h2>
 
-<select class="custom-select">
+<select id="Q4" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="1" class="correct">One</option>
-    <option value="2" class="incorrect">Two</option>
-    <option value="3" class="incorrect">Three</option>
-    <option value="4" class="incorrect">Four</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
   </select>
 
 
-<h2 class="Q5">Fifth Question Here</h2>
+<h2>Fifth Question Here</h2>
 
-<select class="custom-select">
+<select id="Q5" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="1" class="incorrect">One</option>
-    <option value="2" class="correct">Two</option>
-    <option value="3" class="incorrect">Three</option>
-    <option value="4" class="incorrect">Four</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
   </select>
 
 <button type="button" class ="submitButton" class="btn btn-primary btn-lg btn-block">Submit</button>`)
     run()
-    $(".submitButton").on("click", scoreSubmit() )
+
+    $(".submitButton").on("click", function() {
+        gameOver() 
+        scoreGame() }
+    )}
+
+
+function scoreGame () {
+    var Q1Score = $("Q1").val();
+    console.log(Q1Score);
+    if (Q1Score == "correct") {
+        correct ++; 
+    console.log(correct);}
+    
+    
+    
 }
-
-function scoreSubmit() {
-    if $("Q1") = class"correct"
-        correct++
-
-    gameOver()
-}
-
 
 
 function gameOver() {
@@ -94,10 +104,13 @@ function gameOver() {
     $(".data").html(`<h2>Game Over!</h2>
     <div class="wins">Correct: </div>
     <div class="losses">Incorrect: </div>
-    <button type="button" class="btn btn-info">Try Again</button>`)
+    <button type="button" class="restartButton class="btn btn-info">Try Again</button>`)
+
+    $(".restartButton").on("click", function () {
+        startScreen () }
 
 
-}
+)}
 
 //Build timer
 
@@ -122,10 +135,6 @@ function stop() {
     clearInterval(intervalId);
 }
 
-$(document).ready(questionScreen);
+$(document).ready(startScreen);
 
 
-//Display timer
-//Change screen to end screen 
-//Display scores
-//Restart button
