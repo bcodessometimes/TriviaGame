@@ -16,7 +16,9 @@ function startScreen() {
         <button type="button" class=startButton class="btn btn-info">Begin</button>
     </div>`)
     $(".startButton").on("click", function() {
-    questionScreen () }
+    questionScreen () 
+    correct = 0}
+    
 )}
 
 function questionScreen () {
@@ -29,8 +31,8 @@ function questionScreen () {
 <select id="Q1" class="custom-select">
     <option selected>Select Answer</option>
     <option value="incorrect">Incorrect</option>
-    <option value="correct">Correct</option>
     <option value="incorrect">Incorrect</option>
+    <option value="correct">Correct</option>
     <option value="incorrect">Incorrect</option>
   </select>
 
@@ -48,7 +50,7 @@ function questionScreen () {
 
 <h2>Third Question Here</h2>
 
-<select id="Q2" class="custom-select">
+<select id="Q3" class="custom-select">
     <option selected>Select Answer</option>
     <option value="incorrect">Incorrect</option>
     <option value="correct">Correct</option>
@@ -61,9 +63,9 @@ function questionScreen () {
 
 <select id="Q4" class="custom-select">
     <option selected>Select Answer</option>
-    <option value="incorrect">Incorrect</option>
-    <option value="incorrect">Incorrect</option>
     <option value="correct">Correct</option>
+    <option value="incorrect">Incorrect</option>
+    <option value="incorrect"></option>
     <option value="incorrect">Incorrect</option>
   </select>
 
@@ -82,28 +84,55 @@ function questionScreen () {
     run()
 
     $(".submitButton").on("click", function() {
+        scoreGame()
         gameOver() 
-        scoreGame() }
+        $(".score").append("<h3>" + "Final Score:" + correct + "/5" + "</h3>")
+         }
     )}
 
 
 function scoreGame () {
-    var Q1Score = $("Q1").val();
-    console.log(Q1Score);
-    if (Q1Score == "correct") {
-        correct ++; 
-    console.log(correct);}
+    var Q1Score = $("#Q1").val();
+
+    if (Q1Score === "correct") {
+        correct++; }
+        // console.log(Q1Score);
     
+    var Q2Score = $("#Q2").val();
+
+    if (Q2Score === "correct") {
+        correct++; }
+        // console.log(Q2Score);
+
+    var Q3Score = $("#Q3").val();
+
+    if (Q3Score === "correct") {
+        correct++; }
+        // console.log(Q3Score);
     
+    var Q4Score = $("#Q4").val();
+
+    if (Q4Score === "correct") {
+        correct++; }
+        // console.log(Q4Score);
+
+    var Q5Score = $("#Q5").val();
+
+    if (Q5Score === "correct") {
+        correct++; }
+        // console.log(Q5Score);
+
+        console.log(correct);
+
     
 }
 
 
 function gameOver() {
 
-    $(".data").html(`<h2>Game Over!</h2>
-    <div class="wins">Correct: </div>
-    <div class="losses">Incorrect: </div>
+    $(".data").html(`<h1>Game Over!</h1>
+    <div class="score">  </div>
+    
     <button type="button" class="restartButton class="btn btn-info">Try Again</button>`)
 
     $(".restartButton").on("click", function () {
